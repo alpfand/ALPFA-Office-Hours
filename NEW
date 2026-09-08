@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALPFA Board Office Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12213D; --navy:#0C2340; --navy-soft:#E3E9F3; --gold:#C99700;
+    --paper:#FAFAF7; --line:#D6DBE4; --muted:#5A667A; --white:#fff;
+    --zoom:#2F6DB5; --zoom-soft:#E4EEFA;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:15px;line-height:1.5}
+  a{color:var(--navy)}
+  header{padding:40px 5vw 0;border-top:6px solid var(--gold);border-bottom:1px solid var(--line)}
+  h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6vw,64px);line-height:1;margin:0 0 14px;letter-spacing:-.01em;color:var(--navy)}
+  .lede{max-width:62ch;color:var(--muted);margin:0}
+  a.drive{display:inline-block;font-weight:600;color:var(--navy);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:1px}
+  a.drive:hover{color:var(--gold)}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:var(--muted)}
+  .legend span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-2px}
+  .legend .m::before{background:var(--navy)} .legend .z::before{background:var(--zoom)} .legend .t::before{background:var(--gold)}
+  nav.tabs{display:flex;gap:6px;margin-top:22px}
+  nav.tabs button{border:0;background:none;font:inherit;font-weight:600;font-size:15px;color:var(--muted);padding:10px 16px;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+  nav.tabs button[aria-selected="true"]{color:var(--navy);border-bottom-color:var(--gold)}
+  nav.tabs .drive{margin-left:auto;align-self:center;font-weight:600;font-size:14px;color:var(--navy);text-decoration:none;border:1.5px solid var(--gold);border-radius:999px;padding:6px 14px;margin-bottom:6px}
+  nav.tabs .drive:hover{background:#FBF2D6}
+  nav.tabs button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:4px}
+  main{padding:26px 5vw 60px}
+  [hidden]{display:none !important}
+
+  /* Week grid */
+  .week{display:grid;grid-template-columns:52px repeat(7,1fr);border:1px solid var(--line);background:var(--white);border-radius:10px;overflow:hidden}
+  .dayhead{padding:10px 8px;font-weight:600;border-bottom:1px solid var(--line);border-left:1px solid var(--line);background:var(--navy);color:#fff}
+  .corner{border-bottom:1px solid var(--line);background:var(--navy)}
+  .times{position:relative;height:var(--h)}
+  .times div{position:absolute;right:8px;font-size:11px;color:var(--muted);transform:translateY(-50%)}
+  .col{position:relative;height:var(--h);border-left:1px solid var(--line);background:
+    repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--hour) - 1px),var(--line) calc(var(--hour) - 1px),var(--line) var(--hour))}
+  .slot{position:absolute;left:4px;right:4px;border:0;border-radius:6px;padding:6px 8px;text-align:left;cursor:pointer;
+    background:var(--navy-soft);border-left:4px solid var(--navy);color:var(--ink);font:inherit;font-size:12.5px;line-height:1.3;overflow:hidden}
+  .slot.zoom{background:var(--zoom-soft);border-left-color:var(--zoom)}
+  .slot.tbd{background:#FBF2D6;border-left-color:var(--gold)}
+  .slot b{display:block;font-weight:600;font-size:13px}
+  .slot i{display:block;font-style:normal;color:var(--muted);font-size:11.5px;margin-bottom:2px}
+  .slot:hover,.slot:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+  .list{display:none}
+  .list h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:22px 0 8px}
+  .list .slot{position:static;display:block;width:100%;margin-bottom:8px;font-size:14px}
+  .list .slot i{font-size:13px}
+  @media (max-width:820px){.week{display:none}.list{display:block}}
+
+  /* Board tab */
+  .board{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px}
+  .card .top{display:flex;gap:14px;align-items:center}
+  .avatar{width:68px;height:68px;border-radius:50%;flex:none;object-fit:cover;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Instrument Serif",Georgia,serif;font-size:26px;border:3px solid var(--gold)}
+  .card h3{margin:0;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:24px;line-height:1.1;color:var(--navy)}
+  .card .role{font-weight:600;font-size:13.5px;color:var(--navy)}
+  .card .year{font-size:13px;color:var(--muted)}
+  .card dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px}
+  .card dt{color:var(--muted);font-weight:500}
+  .card dd{margin:0}
+  .card dd.todo{color:#9AA3B2;font-style:italic}
+  .card .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:6px;font-size:13.5px}
+  .card .links a{font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--gold)}
+  .card .slots{font-size:13px;color:var(--muted)}
+
+  /* Booking panel */
+  .scrim{position:fixed;inset:0;background:rgba(12,35,64,.5);display:none;align-items:center;justify-content:center;padding:16px;z-index:10}
+  .scrim.open{display:flex}
+  .panel{background:var(--white);border-radius:14px;max-width:460px;width:100%;padding:26px 26px 22px;box-shadow:0 24px 60px rgba(0,0,0,.25);max-height:95vh;overflow:auto}
+  .panel h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:32px;margin:0 0 2px;line-height:1.05}
+  .panel .sub{color:var(--muted);margin:0 0 6px}
+  .panel #psub{margin-bottom:18px}
+  .panel #prole strong{color:var(--navy);font-weight:600}
+  label{display:block;font-weight:500;margin:14px 0 6px;font-size:14px}
+  input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--paper)}
+  input:focus,select:focus{outline:2px solid var(--gold);border-color:transparent}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:4px}
+  .actions{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .btn{flex:1;min-width:150px;padding:12px 14px;border-radius:8px;border:1px solid var(--navy);background:var(--navy);color:#fff;font:inherit;font-weight:600;cursor:pointer;text-align:center;text-decoration:none}
+  .btn.secondary{background:#fff;color:var(--navy)}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .close{float:right;border:0;background:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1}
+  footer{padding:0 5vw 40px;color:var(--muted);font-size:13px;max-width:70ch}
+  @media (prefers-reduced-motion:no-preference){.panel{animation:rise .18s ease-out}}
+  @keyframes rise{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
+</style>
+</head>
+<body>
+<header>
+  <h1>ALPFA Board Office Hours</h1>
+  <p class="lede">Pick a board member, choose a 30-minute time inside their weekly window, and add it straight to your Google Calendar — the invite goes to both of you. All times are Eastern.</p>
+  <p class="lede" style="margin-top:10px"><a class="drive" href="https://drive.google.com/drive/folders/0AAES8M6u7VtnUk9PVA" target="_blank" rel="noopener">Recruiting Resources Drive ↗</a></p>
+  <div class="legend"><span class="m">In person</span><span class="z">Zoom / virtual option</span><span class="t">Location to be confirmed</span></div>
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tab-schedule" aria-selected="true" aria-controls="view-schedule">Schedule</button>
+    <button role="tab" id="tab-board" aria-selected="false" aria-controls="view-board">Meet the board</button>
+    <a class="drive" href="https://drive.google.com/drive/folders/0AAES8M6u7VtnUk9PVA" target="_blank" rel="noopener">Recruiting Resources Drive ↗</a>
+  </nav>
+</header>
+
+<main>
+  <section id="view-schedule" role="tabpanel">
+    <div class="week" id="week" aria-label="Weekly office hours"></div>
+    <div class="list" id="list"></div>
+  </section>
+  <section id="view-board" role="tabpanel" hidden>
+    <div class="board" id="board"></div>
+  </section>
+</main>
+
+<footer>Can't make any of these windows? Email the board member directly — their addresses are on the Meet the board tab. Looking for resume templates, guides, and prep material? Browse the <a href="https://drive.google.com/drive/folders/0AAES8M6u7VtnUk9PVA" target="_blank" rel="noopener">Recruiting Resources Drive</a>.</footer>
+
+<div class="scrim" id="scrim" role="dialog" aria-modal="true" aria-labelledby="ptitle">
+  <div class="panel">
+    <button class="close" id="close" aria-label="Close">×</button>
+    <h2 id="ptitle"></h2>
+    <p class="sub" id="prole"></p>
+    <p class="sub" id="psub"></p>
+    <label for="date">Date</label><select id="date"></select>
+    <label for="start">Start time</label><select id="start"></select>
+    <p class="hint">Each meeting is 30 minutes.</p>
+    <label for="you">Your name</label><input id="you" placeholder="e.g. Jordan Rivera" autocomplete="name" required>
+    <label for="email">Your email</label><input id="email" type="email" placeholder="you@nd.edu" autocomplete="email" required>
+    <p class="hint" id="invitehint"></p>
+    <label for="topic">What do you want to talk about? (optional)</label><input id="topic" placeholder="Resume review, recruiting, club questions…">
+    <div class="actions">
+      <a class="btn" id="gcal" target="_blank" rel="noopener">Add to Google Calendar</a>
+      <a class="btn secondary" id="ics" download="alpfa-office-hours.ics">Download .ics</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   BOARD DATA — edit here.
+   - slots: day 1=Mon … 7=Sun; start/end in decimal hours (10.5 = 10:30), Eastern.
+   - photo: put images in a "photos" folder next to index.html, e.g. photos/adriana-llobet.jpg
+   - bio fields (major, country, internships, goals): leave "" and the card shows "to be added".
+   ===================================================================== */
+const MEMBERS = [
+  {name:"Martin Castellanos", role:"Co-President", bg:"Palantir · BCG", year:"Senior", email:"", linkedin:"https://www.linkedin.com/in/martin-castellanos/", photo:"photos/martin-castellanos.jpg",
+   major:"", country:"Bolivia", internships:"Palantir; BCG", goals:"STEM",
+   slots:[{day:1,start:10.5,end:11.5,where:"Hagerty"},{day:3,start:10.5,end:11.5,where:"Hagerty"}]},
+  {name:"Vicente Zavala", role:"Co-President", bg:"Goldman Sachs Investment Banking LatAm", year:"Senior", email:"", linkedin:"https://www.linkedin.com/in/vicente-zavala-a88b78286/", photo:"photos/vicente-zavala.jpg",
+   major:"", country:"Peru", internships:"Goldman Sachs Investment Banking LatAm", goals:"Investment Banking",
+   slots:[{day:1,start:17,end:19,where:"Duncan 5th Floor / Zoom (email me)"},{day:3,start:17,end:19,where:"Duncan 5th Floor / Zoom (email me)"}]},
+  {name:"Sofia Noriega", role:"Vice President", bg:"JPMorgan Investment Banking LatAm", year:"Junior", email:"snoriega@nd.edu", linkedin:"https://www.linkedin.com/in/sofia-noriega-41b85b314/", photo:"photos/sofia-noriega.jpg",
+   major:"", country:"Peru", internships:"JPMorgan Investment Banking LatAm", goals:"Investment Banking",
+   slots:[{day:1,start:19,end:21,where:""}]},
+  {name:"Patricio López", role:"Head of Finance", bg:"Santander Investment Banking", year:"Senior", email:"plopezwi@nd.edu", linkedin:"https://www.linkedin.com/in/patriciolopezw/", photo:"photos/patricio-lopez.jpg",
+   major:"", country:"Bolivia", internships:"Santander Investment Banking", goals:"Investment Banking",
+   slots:[{day:1,start:16.5,end:18.5,where:"Mendoza"}]},
+  {name:"Isabella Olarte", role:"Head of Business & Consulting", bg:"BCG", year:"Junior", email:"", linkedin:"https://www.linkedin.com/in/isabella-olarte-ortega-35725b206/", photo:"photos/isabella-olarte.jpg",
+   major:"", country:"Colombia", internships:"BCG", goals:"Consulting",
+   slots:[{day:2,start:13,end:15,where:"Zoom"}]},
+  {name:"Felipe Garrett", role:"Head of Engineering", bg:"Morgan Stanley Asset Management · Honors Mathematical Research", year:"Senior", email:"fgarret2@nd.edu", linkedin:"https://www.linkedin.com/in/felipe-garrett-larrabure/", photo:"photos/felipe-garrett.jpg",
+   major:"", country:"Bolivia", internships:"Morgan Stanley Asset Management; Honors Mathematical Research", goals:"Asset Management / STEM",
+   slots:[{day:5,start:14,end:16,where:""}]},
+  {name:"Francisco Moreyra", role:"Co-Director of Investment Banking", bg:"JPMorgan Investment Banking LatAm", year:"Junior", email:"fmoreyra@nd.edu", linkedin:"https://www.linkedin.com/in/fmoreyra/", photo:"photos/francisco-moreyra.jpg",
+   major:"", country:"Peru", internships:"JPMorgan Investment Banking LatAm", goals:"Investment Banking",
+   slots:[{day:2,start:17,end:19,where:"Mendoza / Zoom (email me)"}]},
+  {name:"Alejandro Siman", role:"Co-Director of Investment Banking", bg:"Evercore Investment Banking; also Private Equity (Infrastructure) and VC experience", year:"Junior", email:"asimanga@nd.edu", linkedin:"https://www.linkedin.com/in/alejandro-siman-71aa6622b/", photo:"photos/alejandro-siman.jpg",
+   major:"", country:"El Salvador", internships:"Evercore Investment Banking; Private Equity (Infrastructure); Venture Capital", goals:"Investment Banking, Private Equity, Venture Capital, and Entrepreneurship",
+   slots:[{day:4,start:16,end:18,where:""}]},
+  {name:"Isabela Chacón", role:"Director of Wealth Management", bg:"JPMorgan Wealth Management", year:"Junior", email:"ichacon@nd.edu", linkedin:"https://www.linkedin.com/in/isabela-chac%C3%B3n/", photo:"photos/isabela-chacon.jpg",
+   major:"", country:"Colombia", internships:"JPMorgan Wealth Management", goals:"Wealth Management",
+   slots:[{day:1,start:12.5,end:14.5,where:"Mendoza / Virtual"}]},
+  {name:"Ane Ruiz", role:"Director of Sales & Trading", bg:"Goldman Sachs Sales & Trading", year:"Junior", email:"aruizboy@nd.edu", linkedin:"https://www.linkedin.com/in/ane-ruiz-boyra/", photo:"photos/ane-ruiz.jpg",
+   major:"", country:"Spain", internships:"Goldman Sachs Sales & Trading", goals:"Sales and Trading",
+   slots:[{day:2,start:16,end:18,where:"Hesburgh / Mendoza"}]},
+  {name:"Lucia Mencia", role:"Director of Engineering", bg:"EY Consulting · Netflix", year:"Senior", email:"lmenciak@nd.edu", linkedin:"https://www.linkedin.com/in/luciamencia/", photo:"photos/lucia-mencia.jpg",
+   major:"", country:"Honduras", internships:"EY Consulting; Netflix", goals:"Engineering / STEM",
+   slots:[{day:3,start:15,end:17,where:"Meruelo Career Center (in person)"}]},
+  {name:"Andrea Faraj", role:"Director of Marketing", bg:"", year:"Junior", email:"afaraj@nd.edu", linkedin:"https://www.linkedin.com/in/andrea-faraj/", photo:"photos/andrea-faraj.jpg",
+   major:"", country:"Honduras", internships:"", goals:"Marketing / Wealth Management",
+   slots:[{day:1,start:15,end:17,where:"Mendoza"}]},
+  {name:"Jonathan Pérez Gómez", role:"Director of Entrepreneurship & Venture Capital", bg:"", year:"Sophomore", email:"jperezgo@nd.edu", linkedin:"https://www.linkedin.com/in/jonathanperezgomez/", photo:"photos/jonathan-perez-gomez.jpg",
+   major:"", country:"Mexico", internships:"", goals:"Entrepreneurship & VC",
+   slots:[{day:3,start:18,end:20,where:"Flexible (email me)"},{day:7,start:14,end:16,where:"Flexible (email me)"}]},
+  {name:"Pascual Noriega", role:"Director of Consulting", bg:"London Study Abroad", year:"Sophomore", email:"pnoriega@nd.edu", linkedin:"https://www.linkedin.com/in/noriegapascual/", photo:"photos/pascual-noriega.jpg",
+   major:"", country:"Mexico", internships:"", goals:"Consulting",
+   slots:[{day:4,start:18,end:20,where:"O'Shaughnessy Hall"}]},
+  {name:"Agustina Restelli", role:"Director of Treasury", bg:"London Study Abroad", year:"Sophomore", email:"arestell@nd.edu", linkedin:"https://www.linkedin.com/in/agustina-restelli/", photo:"photos/agustina-restelli.jpg",
+   major:"", country:"Argentina", internships:"", goals:"Investment Banking",
+   slots:[{day:4,start:11,end:13,where:""}]},
+  {name:"Adriana Llobet", role:"Head of Outreach", bg:"Glenair Freshman Finance Internship", year:"Sophomore", email:"allobet@nd.edu", linkedin:"https://www.linkedin.com/in/adrianallobet", photo:"photos/adriana-llobet.jpg",
+   major:"Finance & Business Analytics; minor in Computing and Digital Technologies", country:"Costa Rica",
+   internships:"Glenair Freshman Finance Internship",
+   goals:"Investment Banking",
+   slots:[{day:3,start:16,end:18,where:"Mendoza"}]},
+  {name:"Carlos Lazarte", role:"Head of Treasury", bg:"Goldman Sachs Investment Banking LatAm", year:"Junior", email:"clazarte@nd.edu", linkedin:"https://www.linkedin.com/in/carloslazarte/", photo:"photos/carlos-lazarte.jpg",
+   major:"", country:"Peru", internships:"Goldman Sachs Investment Banking LatAm", goals:"Investment Banking",
+   slots:[{day:4,start:16,end:18,where:"Mendoza"}]},
+];
+
+const DAYS = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const TZ = "America/Indiana/Indianapolis";
+const DAY_START = 10, DAY_END = 21, HOUR_PX = 64;
+
+// flatten slots
+const HOURS = []; MEMBERS.forEach((m,mi)=>m.slots.forEach(s=>HOURS.push({...s, m:mi})));
+
+const fmt = h => { const hh=Math.floor(h), mm=Math.round((h-hh)*60); const ap=hh>=12?"pm":"am", h12=((hh+11)%12)+1; return `${h12}${mm?":"+String(mm).padStart(2,"0"):""} ${ap}`; };
+const kind = w => /zoom|virtual/i.test(w) ? "zoom" : w ? "" : "tbd";
+const whereText = w => w || "Location to be confirmed";
+const esc = t => String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const initials = n => n.split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0]).join("");
+
+/* ---- Tabs ---- */
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+tabs.forEach(t=>t.addEventListener("click",()=>{
+  tabs.forEach(x=>{ x.setAttribute("aria-selected", x===t); document.getElementById(x.getAttribute("aria-controls")).hidden = x!==t; });
+  history.replaceState(null,"", t.id==="tab-board" ? "#board" : "#schedule");
+}));
+if(location.hash==="#board") document.getElementById("tab-board").click();
+
+/* ---- Week grid ---- */
+const week=document.getElementById("week");
+const H=(DAY_END-DAY_START)*HOUR_PX;
+week.style.setProperty("--h",H+"px"); week.style.setProperty("--hour",HOUR_PX+"px");
+week.insertAdjacentHTML("beforeend",`<div class="corner"></div>`+DAYS.map(d=>`<div class="dayhead">${d.slice(0,3)}</div>`).join(""));
+let times=`<div class="times">`; for(let h=DAY_START;h<=DAY_END;h++) times+=`<div style="top:${(h-DAY_START)*HOUR_PX}px">${fmt(h)}</div>`;
+week.insertAdjacentHTML("beforeend",times+`</div>`);
+
+function slotButton(s, mobile){
+  const m=MEMBERS[s.m]; const b=document.createElement("button"); b.className=`slot ${kind(s.where)}`;
+  b.innerHTML = mobile
+    ? `<b>${esc(m.name)}</b><i>${esc(m.role)}${m.bg?" · "+esc(m.bg):""}</i>${fmt(s.start)}–${fmt(s.end)} · ${esc(whereText(s.where))}`
+    : `<b>${esc(m.name)}</b><i>${esc(m.role)}</i>${fmt(s.start)}–${fmt(s.end)}`;
+  b.onclick=()=>openPanel(s); return b;
+}
+for(let d=1;d<=7;d++){
+  const items=HOURS.filter(s=>s.day===d).sort((a,b)=>a.start-b.start);
+  const lanes=[]; items.forEach(s=>{ let l=lanes.findIndex(end=>end<=s.start); if(l<0){l=lanes.length;lanes.push(0);} lanes[l]=s.end; s.lane=l; });
+  const n=lanes.length||1; const col=document.createElement("div"); col.className="col";
+  items.forEach(s=>{ const b=slotButton(s,false);
+    b.style.top=((s.start-DAY_START)*HOUR_PX+2)+"px"; b.style.height=((s.end-s.start)*HOUR_PX-4)+"px";
+    b.style.left=`calc(${s.lane*100/n}% + 3px)`; b.style.right=`calc(${(n-1-s.lane)*100/n}% + 3px)`;
+    col.appendChild(b); });
+  week.appendChild(col);
+}
+const list=document.getElementById("list");
+for(let d=1;d<=7;d++){
+  const items=HOURS.filter(s=>s.day===d).sort((a,b)=>a.start-b.start); if(!items.length) continue;
+  list.insertAdjacentHTML("beforeend",`<h2>${DAYS[d-1]}</h2>`); items.forEach(s=>list.appendChild(slotButton(s,true)));
+}
+
+/* ---- Board cards ---- */
+const board=document.getElementById("board");
+const field=(label,val)=>`<dt>${label}</dt><dd class="${val?"":"todo"}">${val?esc(val):"to be added"}</dd>`;
+MEMBERS.forEach((m,mi)=>{
+  const card=document.createElement("article"); card.className="card";
+  const av = m.photo ? `<img class="avatar" src="${esc(m.photo)}" alt="" onerror="this.outerHTML='<div class=avatar>${initials(m.name)}</div>'">` : `<div class="avatar">${initials(m.name)}</div>`;
+  const slotsTxt = m.slots.map(s=>`${DAYS[s.day-1].slice(0,3)} ${fmt(s.start)}–${fmt(s.end)}`).join(" · ");
+  card.innerHTML=`
+    <div class="top">${av}<div><h3>${esc(m.name)}</h3><div class="role">${esc(m.role)}</div><div class="year">${esc(m.year||"")}${m.country?" · "+esc(m.country):""}</div></div></div>
+    <dl>
+      ${field("Major",m.major)}
+      ${field("Experience",m.internships||m.bg)}
+      ${field("Interested in",m.goals)}
+    </dl>
+    <div class="slots">Office hours: ${slotsTxt}</div>
+    <div class="links">
+      <a href="#" data-book="${mi}">Book a time</a>
+      ${m.linkedin?`<a href="${esc(m.linkedin)}" target="_blank" rel="noopener">LinkedIn</a>`:""}
+      ${m.email?`<a href="mailto:${esc(m.email)}">Email</a>`:""}
+    </div>`;
+  card.querySelector("[data-book]").onclick=e=>{e.preventDefault(); openPanel(HOURS.find(s=>s.m===mi));};
+  board.appendChild(card);
+});
+
+/* ---- Booking panel ---- */
+const scrim=document.getElementById("scrim"), $=id=>document.getElementById(id);
+let cur=null, curM=null;
+function nextDates(day,count=8){ const out=[]; const t=new Date(); t.setHours(0,0,0,0);
+  let delta=(day%7 - t.getDay()+7)%7; if(delta===0) delta=7;
+  for(let k=0;k<count;k++){ const d=new Date(t); d.setDate(t.getDate()+delta+7*k); out.push(d); } return out; }
+function openPanel(s){
+  cur=s; curM=MEMBERS[s.m];
+  $("ptitle").textContent=curM.name;
+  $("prole").innerHTML=`<strong>${esc(curM.role)}</strong>${curM.bg?" · "+esc(curM.bg):""}`;
+  $("psub").textContent=`${DAYS[s.day-1]}s, ${fmt(s.start)}–${fmt(s.end)} · ${whereText(s.where)}`;
+  $("date").innerHTML=nextDates(s.day).map(d=>`<option value="${d.toISOString().slice(0,10)}">${d.toLocaleDateString("en-US",{weekday:"short",month:"long",day:"numeric"})}</option>`).join("");
+  let o=""; for(let h=s.start; h+0.5<=s.end; h+=0.5) o+=`<option value="${h}">${fmt(h)} – ${fmt(h+0.5)}</option>`; $("start").innerHTML=o;
+  update(); scrim.classList.add("open"); $("date").focus();
+}
+const pad=n=>String(n).padStart(2,"0");
+function stamp(dateStr,h){ const [y,m,d]=dateStr.split("-"); const hh=Math.floor(h), mm=Math.round((h-hh)*60); return `${y}${m}${d}T${pad(hh)}${pad(mm)}00`; }
+function update(){
+  if(!cur) return;
+  const date=$("date").value, h=+$("start").value, you=$("you").value.trim(), topic=$("topic").value.trim(), email=$("email").value.trim();
+  const title=`ALPFA office hours: ${curM.name}${you?" & "+you:""}`;
+  const details=[you?`Member: ${you}${email?" ("+email+")":""}`:"", topic?`Topic: ${topic}`:"", "Booked via the ALPFA Board Office Hours page."].filter(Boolean).join("\n");
+  const guests=[curM.email,email].filter(Boolean);
+  $("invitehint").textContent = curM.email ? `The invite goes to ${curM.email} and to you.` : `${curM.name}'s email isn't on file yet — forward the invite to them.`;
+  const s=stamp(date,h), e=stamp(date,h+0.5);
+  const p=new URLSearchParams({action:"TEMPLATE",text:title,dates:`${s}/${e}`,ctz:TZ,details,location:whereText(cur.where)});
+  if(guests.length) p.set("add",guests.join(","));
+  $("gcal").href="https://calendar.google.com/calendar/render?"+p.toString();
+  const ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//ALPFA Board Office Hours//EN","BEGIN:VEVENT",
+    `UID:${s}-${curM.name.replace(/\W/g,"")}@alpfa-officehours`,`DTSTART;TZID=${TZ}:${s}`,`DTEND;TZID=${TZ}:${e}`,
+    `SUMMARY:${title}`,`LOCATION:${whereText(cur.where)}`,`DESCRIPTION:${details.replace(/\n/g,"\\n")}`,
+    ...(curM.email?[`ATTENDEE;CN=${curM.name}:mailto:${curM.email}`]:[]), ...(email?[`ATTENDEE;CN=${you||email}:mailto:${email}`]:[]),
+    "END:VEVENT","END:VCALENDAR"].join("\r\n");
+  $("ics").href="data:text/calendar;charset=utf-8,"+encodeURIComponent(ics);
+}
+["date","start","you","topic","email"].forEach(id=>$(id).addEventListener("input",update));
+const closeP=()=>scrim.classList.remove("open");
+$("close").onclick=closeP; scrim.addEventListener("click",e=>{if(e.target===scrim)closeP();});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeP();});
+</script>
+</body>
+</html>
