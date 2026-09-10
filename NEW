@@ -186,7 +186,7 @@ const MEMBERS = [
   {name:"Pascual Noriega", role:"Director of Consulting", bg:"London Study Abroad", year:"Sophomore", email:"pnoriega@nd.edu", linkedin:"https://www.linkedin.com/in/noriegapascual/", photo:"photos/pascual-noriega.jpg",
    major:"", country:"Mexico", internships:"", goals:"Consulting",
    slots:[{day:4,start:18,end:20,where:"O'Shaughnessy Hall"}]},
-  {name:"Agustina Restelli", role:"Director of Treasury", bg:"London Study Abroad, Investment Banking (Argentina)", year:"Sophomore", email:"arestell@nd.edu", linkedin:"https://www.linkedin.com/in/agustina-restelli/", photo:"photos/agustina-restelli.jpg",
+  {name:"Agustina Restelli", role:"Director of Treasury", bg:"London Study Abroad; Investment Banking (Argentina)", year:"Sophomore", email:"arestell@nd.edu", linkedin:"https://www.linkedin.com/in/agustina-restelli/", photo:"photos/agustina-restelli.jpg",
    major:"", country:"Argentina", internships:"", goals:"Investment Banking",
    slots:[{day:4,start:11,end:13,where:""}]},
   {name:"Adriana Llobet", role:"Head of Outreach", bg:"Glenair Freshman Finance Internship", year:"Sophomore", email:"allobet@nd.edu", linkedin:"https://www.linkedin.com/in/adrianallobet", photo:"photos/adriana-llobet.jpg",
