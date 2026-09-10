@@ -1,0 +1,285 @@
+/* =============================================================================
+   BOARD DATA — this is the only file you need to edit to update the site.
+
+   Each member:
+     name, role                  identity, shown on the card and in the booking panel
+     year, country               shown as the card's meta line
+     email                       added as the calendar guest; "" hides the Email link
+     linkedin                    full URL; "" hides the LinkedIn link
+     zoom                        personal Zoom room URL; omit if they have none.
+                                 Shown on the card and prefilled into the invite.
+     photo                       file name inside public/photos, e.g.
+                                 "martin-castellanos.jpg". "" falls back to initials.
+     major, internships,
+     interests                   card details; "" renders as "to be added"
+     slots                       weekly office-hours windows:
+                                   day   1 = Monday … 7 = Sunday
+                                   start/end  decimal hours, Eastern (10.5 = 10:30)
+                                   where      location text; "" = to be confirmed,
+                                              text containing "zoom"/"virtual"
+                                              is styled as a virtual option
+   ============================================================================= */
+
+export const MEMBERS = [
+  {
+    name: "Martin Castellanos",
+    role: "Co-President",
+    year: "Senior",
+    country: "Bolivia",
+    email: "mcastel5@nd.edu",
+    linkedin: "https://www.linkedin.com/in/martin-castellanos/",
+    photo: "martin-castellanos.jpg",
+    major: "Computer Science and Math",
+    internships: "Palantir Technologies; BCG; Start-Up",
+    interests: "Tech, quant trading, entrepeneurship, consulting",
+    slots: [
+      { day: 1, start: 10.5, end: 11.5, where: "Hagerty" },
+      { day: 3, start: 10.5, end: 11.5, where: "Hagerty" },
+    ],
+  },
+  {
+    name: "Vicente Zavala",
+    role: "Co-President",
+    year: "Senior",
+    country: "Peru",
+    email: "vzavalad@nd.edu",
+    linkedin: "https://www.linkedin.com/in/vicente-zavala-a88b78286/",
+    photo: "vicente-zavala.jpg",
+    major: "Finance and Economics",
+    internships: "Goldman Sachs Investment Banking LatAm",
+    interests: "Investment Banking",
+    slots: [
+      { day: 1, start: 17, end: 19, where: "Duncan 5th Floor / Zoom (email me)" },
+      { day: 3, start: 17, end: 19, where: "Duncan 5th Floor / Zoom (email me)" },
+    ],
+  },
+  {
+    name: "Sofia Noriega",
+    role: "Vice President",
+    year: "Junior",
+    country: "Peru",
+    email: "snoriega@nd.edu",
+    linkedin: "https://www.linkedin.com/in/sofia-noriega-41b85b314/",
+    photo: "sofia-noriega.jpg",
+    major: "Finance and Economics",
+    internships: "JPMorgan Investment Banking LatAm",
+    interests: "Investment Banking",
+    slots: [
+      { day: 1, start: 19, end: 21, where: "" },
+    ],
+  },
+  {
+    name: "Patricio López",
+    role: "Head of Finance",
+    year: "Senior",
+    country: "Bolivia",
+    email: "plopezwi@nd.edu",
+    linkedin: "https://www.linkedin.com/in/patriciolopezw/",
+    photo: "patricio-lopez.jpg",
+    major: "Honors Finance and ACMS, Minor in Theology",
+    internships: "Santander Investment Banking",
+    interests: "Investment Banking",
+    slots: [
+      { day: 1, start: 16.5, end: 18.5, where: "Mendoza" },
+    ],
+  },
+  {
+    name: "Isabella Olarte",
+    role: "Head of Business & Consulting",
+    year: "Junior",
+    country: "Colombia",
+    email: "iolarteo@nd.edu",
+    linkedin: "https://www.linkedin.com/in/isabella-olarte-ortega-35725b206/",
+    zoom: "https://notredame.zoom.us/j/6174169505?pwd=bc3BUc68XSKObf3IMacKTSrWblaNqt.1",
+    photo: "isabella-olarte.jpg",
+    major: "Business Analytics and Psychology",
+    internships: "BCG",
+    interests: "Consulting",
+    slots: [
+      { day: 2, start: 14, end: 16, where: "Zoom" },
+    ],
+  },
+  {
+    name: "Felipe Garrett",
+    role: "Head of Engineering",
+    year: "Senior",
+    country: "Bolivia",
+    email: "fgarret2@nd.edu",
+    linkedin: "https://www.linkedin.com/in/felipe-garrett-larrabure/",
+    photo: "felipe-garrett.jpg",
+    major: "Honors Applied Math",
+    internships: "Morgan Stanley Asset Management; Honors Mathematical Research",
+    interests: "Asset Management / STEM",
+    slots: [
+      { day: 5, start: 14, end: 16, where: "" },
+    ],
+  },
+  {
+    name: "Francisco Moreyra",
+    role: "Co-Director of Investment Banking",
+    year: "Junior",
+    country: "Peru",
+    email: "fmoreyra@nd.edu",
+    linkedin: "https://www.linkedin.com/in/fmoreyra/",
+    photo: "francisco-moreyra.jpg",
+    major: "Finance and Economics",
+    internships: "JPMorgan Investment Banking LatAm",
+    interests: "Investment Banking",
+    slots: [
+      { day: 2, start: 17, end: 19, where: "Mendoza / Zoom (email me)" },
+    ],
+  },
+  {
+    name: "Alejandro Siman",
+    role: "Co-Director of Investment Banking",
+    year: "Junior",
+    country: "El Salvador",
+    email: "asimanga@nd.edu",
+    linkedin: "https://www.linkedin.com/in/alejandro-siman-71aa6622b/",
+    photo: "alejandro-siman.jpg",
+    major: "Finance",
+    internships: "Evercore Investment Banking; Private Equity (Infrastructure); Venture Capital",
+    interests: "Investment Banking, Private Equity, Venture Capital, and Entrepreneurship",
+    slots: [
+      { day: 4, start: 16, end: 18, where: "" },
+    ],
+  },
+  {
+    name: "Isabela Chacón",
+    role: "Director of Wealth Management",
+    year: "Junior",
+    country: "Colombia",
+    email: "ichacon@nd.edu",
+    linkedin: "https://www.linkedin.com/in/isabela-chac%C3%B3n/",
+    zoom: "https://notredame.zoom.us/j/5409275774?pwd=ury2xk7MqbqSIfSSIlllg5Xbdk92tr.1",
+    photo: "isabela-chacon.jpg",
+    major: "Finance and Economics, Minor in Real Estate",
+    internships: "JPMorgan Wealth Management",
+    interests: "Wealth Management",
+    slots: [
+      { day: 1, start: 12.5, end: 14.5, where: "Mendoza / Virtual" },
+    ],
+  },
+  {
+    name: "Ane Ruiz",
+    role: "Director of Sales & Trading",
+    year: "Junior",
+    country: "Spain",
+    email: "aruizboy@nd.edu",
+    linkedin: "https://www.linkedin.com/in/ane-ruiz-boyra/",
+    photo: "ane-ruiz.jpg",
+    major: "Finance and Applied Mathematics",
+    internships: "Ospraie Management, Goldman Sachs Sales & Trading",
+    interests: "Sales and Trading; PE",
+    slots: [
+      { day: 2, start: 16, end: 18, where: "Hesburgh / Mendoza" },
+    ],
+  },
+  {
+    name: "Lucia Mencia",
+    role: "Director of Engineering",
+    year: "Senior",
+    country: "Honduras",
+    email: "lmenciak@nd.edu",
+    linkedin: "https://www.linkedin.com/in/luciamencia/",
+    photo: "lucia-mencia.jpg",
+    major: "Mechanical Engineering",
+    internships: "EY Consulting; Netflix",
+    interests: "Engineering / STEM",
+    slots: [
+      { day: 3, start: 15, end: 17, where: "Meruelo Career Center (in person)" },
+    ],
+  },
+  {
+    name: "Andrea Faraj",
+    role: "Director of Marketing",
+    year: "Junior",
+    country: "Honduras",
+    email: "afaraj@nd.edu",
+    linkedin: "https://www.linkedin.com/in/andrea-faraj/",
+    photo: "andrea-faraj.jpg",
+    major: "Finance and Marketing",
+    internships: "Morgan Stanley",
+    interests: "Marketing / Wealth Management",
+    slots: [
+      { day: 1, start: 15, end: 17, where: "Mendoza" },
+    ],
+  },
+  {
+    name: "Jonathan Pérez Gómez",
+    role: "Director of Entrepreneurship & Venture Capital",
+    year: "Sophomore",
+    country: "Mexico",
+    email: "jperezgo@nd.edu",
+    linkedin: "https://www.linkedin.com/in/jonathanperezgomez/",
+    zoom: "https://notredame.zoom.us/j/2680570964?pwd=ANyrPDTRYrV4Wuhv4cd77LXK6kREQW.1",
+    photo: "jonathan-perez-gomez.jpg",
+    major: "Strategic Management and Finance",
+    internships: "",
+    interests: "Entrepreneurship & VC",
+    slots: [
+      { day: 3, start: 18, end: 20, where: "Flexible (email me)" },
+      { day: 7, start: 14, end: 16, where: "Flexible (email me)" },
+    ],
+  },
+  {
+    name: "Pascual Noriega",
+    role: "Director of Consulting",
+    year: "Sophomore",
+    country: "Mexico",
+    email: "pnoriega@nd.edu",
+    linkedin: "https://www.linkedin.com/in/noriegapascual/",
+    photo: "pascual-noriega.jpg",
+    major: "Mechanical Engineering",
+    internships: "London Study Abroad",
+    interests: "Consulting",
+    slots: [
+      { day: 4, start: 18, end: 20, where: "O'Shaughnessy Hall" },
+    ],
+  },
+  {
+    name: "Agustina Restelli",
+    role: "Director of Treasury",
+    year: "Sophomore",
+    country: "Argentina",
+    email: "arestell@nd.edu",
+    linkedin: "https://www.linkedin.com/in/agustina-restelli/",
+    photo: "agustina-restelli.jpg",
+    major: "Electrical Engineering, Minor in Finance",
+    internships: "London Study Abroad",
+    interests: "Investment Banking",
+    slots: [
+      { day: 4, start: 11, end: 13, where: "" },
+    ],
+  },
+  {
+    name: "Adriana Llobet",
+    role: "Head of Outreach",
+    year: "Sophomore",
+    country: "Costa Rica",
+    email: "allobet@nd.edu",
+    linkedin: "https://www.linkedin.com/in/adrianallobet",
+    photo: "adriana-llobet.jpg",
+    major: "Finance & Business Analytics; minor in Computing and Digital Technologies",
+    internships: "Glenair Freshman Finance Internship",
+    interests: "Investment Banking",
+    slots: [
+      { day: 3, start: 16, end: 18, where: "Mendoza" },
+    ],
+  },
+  {
+    name: "Carlos Lazarte",
+    role: "Head of Treasury",
+    year: "Junior",
+    country: "Peru",
+    email: "clazarte@nd.edu",
+    linkedin: "https://www.linkedin.com/in/carloslazarte/",
+    photo: "carlos-lazarte.jpg",
+    major: "Finance and Economics",
+    internships: "Goldman Sachs Investment Banking LatAm",
+    interests: "Investment Banking",
+    slots: [
+      { day: 4, start: 16, end: 18, where: "Mendoza" },
+    ],
+  },
+];

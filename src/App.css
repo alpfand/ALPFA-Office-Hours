@@ -1,0 +1,5 @@
+.site-main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-7) var(--gutter) var(--space-8);
+}

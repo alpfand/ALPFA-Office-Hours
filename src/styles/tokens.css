@@ -1,0 +1,77 @@
+/* Design tokens. Change the look of the whole site from here. */
+:root {
+  /* Brand ------------------------------------------------------------- */
+  --navy: #0c2340;
+  --navy-700: #16335a;
+  --navy-500: #2c4d7d;
+  --gold: #c99700;
+  --gold-600: #ae8200;
+
+  /* Surfaces ---------------------------------------------------------- */
+  --paper: #f7f7f4;
+  --surface: #ffffff;
+  --surface-sunken: #f1f2ef;
+  --scrim: rgba(12, 35, 64, 0.45);
+
+  /* Ink --------------------------------------------------------------- */
+  --ink: #17223a;
+  --muted: #5a667a;
+  --faint: #98a1b0;
+
+  /* Lines ------------------------------------------------------------- */
+  --line: #e2e5ea;
+  --line-strong: #cfd5de;
+
+  /* Slot categories --------------------------------------------------- */
+  --inperson: #0c2340;
+  --inperson-bg: #eef1f7;
+  --zoom: #2f6db5;
+  --zoom-bg: #eaf2fb;
+  --tbd: #a8801a;
+  --tbd-bg: #fbf4e0;
+
+  /* Type -------------------------------------------------------------- */
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body: "Instrument Sans", system-ui, sans-serif;
+
+  --text-xs: 11.5px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-md: 17px;
+  --text-lg: 21px;
+  --text-xl: 26px;
+  --text-2xl: 34px;
+
+  --tracking-eyebrow: 0.14em;
+
+  /* Spacing ----------------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  --gutter: clamp(16px, 3vw, 44px);
+  --max-width: 1680px;
+
+  /* Shape ------------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Elevation --------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(12, 35, 64, 0.06);
+  --shadow-md: 0 2px 6px rgba(12, 35, 64, 0.07),
+    0 8px 24px rgba(12, 35, 64, 0.05);
+  --shadow-lift: 0 4px 10px rgba(12, 35, 64, 0.1),
+    0 14px 34px rgba(12, 35, 64, 0.09);
+  --shadow-panel: 0 30px 70px rgba(12, 35, 64, 0.28);
+
+  /* Motion ------------------------------------------------------------ */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --fast: 0.14s;
+}

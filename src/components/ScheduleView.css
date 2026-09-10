@@ -1,0 +1,13 @@
+.schedule__agenda {
+  display: none;
+}
+
+/* Keep in sync with MOBILE_BREAKPOINT in src/constants.js */
+@media (max-width: 820px) {
+  .schedule__week {
+    display: none;
+  }
+  .schedule__agenda {
+    display: block;
+  }
+}

@@ -1,0 +1,24 @@
+.agenda__day {
+  margin-bottom: var(--space-6);
+}
+
+.agenda h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: var(--text-xl);
+  color: var(--navy);
+  margin: 0 0 var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.agenda__today {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+  vertical-align: middle;
+  margin-left: var(--space-2);
+}
