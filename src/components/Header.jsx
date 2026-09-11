@@ -1,78 +1,58 @@
-import { DAYS } from "../constants.js";
-import { formatRange } from "../lib/time.js";
-import Avatar from "./Avatar.jsx";
-import "./MemberCard.css";
+import { DRIVE_URL } from "../constants.js";
+import Tabs from "./Tabs.jsx";
+import "./Header.css";
 
-function Field({ label, value }) {
+const LEGEND = [
+  { key: "inPerson", label: "In person" },
+  { key: "zoom", label: "Zoom / virtual" },
+  { key: "tbd", label: "Location TBC" },
+];
+
+const markUrl = `${import.meta.env.BASE_URL}alpfa-mark.png`;
+
+export default function Header({ activeTab, onTabChange }) {
   return (
-    <>
-      <dt>{label}</dt>
-      <dd className={value ? "" : "todo"}>{value || "to be added"}</dd>
-    </>
-  );
-}
-
-export default function MemberCard({ member, onBook }) {
-  return (
-    <article className="card">
-      <div className="card__top">
-        <Avatar member={member} />
-        <div className="card__identity">
-          <h3>{member.name}</h3>
-          <p className="card__role">{member.role}</p>
-          <p className="card__meta">
-            {[member.year, member.country].filter(Boolean).join(" · ")}
-          </p>
+    <header className="site-header">
+      <div className="site-header__inner">
+        <div className="site-header__top">
+          <img
+            className="site-header__mark"
+            src={markUrl}
+            alt="ALPFA at the University of Notre Dame"
+            width="88"
+            height="73"
+          />
+          <div className="site-header__titles">
+            <p className="eyebrow">University of Notre Dame</p>
+            <h1>ALPFA Board Office Hours</h1>
+            <p className="lede">
+              Pick a board member, choose a 30 minute time inside their weekly
+              window, and add it straight to your Google Calendar. The invite
+              goes to both of you (all times EST).
+            </p>
+          </div>
         </div>
+
+        <ul className="legend">
+          {LEGEND.map((item) => (
+            <li key={item.key} className={`legend__item legend--${item.key}`}>
+              {item.label}
+            </li>
+          ))}
+        </ul>
+
+        <Tabs active={activeTab} onChange={onTabChange}>
+          <a
+            className="tabs__drive"
+            href={DRIVE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Recruiting Resources
+            <span aria-hidden="true">↗</span>
+          </a>
+        </Tabs>
       </div>
-
-
-      <dl>
-        <Field label="Major" value={member.major} />
-        <Field label="Experience" value={member.internships} />
-        <Field label="Interests" value={member.interests} />
-        <Field label="Campus Involvement" value={member.involvement} />
-      </dl>
-
-      <ul className="card__hours">
-        {member.slots.map((s) => (
-          <li key={`${s.day}-${s.start}`}>
-            <span className="card__day">{DAYS[s.day - 1].slice(0, 3)}</span>
-            <span className="card__time">{formatRange(s.start, s.end)}</span>
-            <span className="card__where">
-              {s.where || "Location to be confirmed"}
-            </span>
-          </li>
-        ))}
-      </ul>
-
-      <div className="card__actions">
-        <button
-          type="button"
-          className="card__book"
-          onClick={() => onBook(member)}
-        >
-          Book a time
-        </button>
-        <div className="card__links">
-          {member.zoom && (
-            <a
-              className="card__zoom"
-              href={member.zoom}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Zoom room
-            </a>
-          )}
-          {member.linkedin && (
-            <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-              LinkedIn
-            </a>
-          )}
-          {member.email && <a href={`mailto:${member.email}`}>Email</a>}
-        </div>
-      </div>
-    </article>
+    </header>
   );
 }
