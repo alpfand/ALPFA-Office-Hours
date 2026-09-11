@@ -11,7 +11,7 @@
      photo                       file name inside public/photos, e.g.
                                  "martin-castellanos.jpg". "" falls back to initials.
      major, internships,
-     interests                   card details; "" renders as "to be added"
+     interests, involvement      card details; "" renders as "to be added"
      slots                       weekly office-hours windows:
                                    day   1 = Monday … 7 = Sunday
                                    start/end  decimal hours, Eastern (10.5 = 10:30)
@@ -32,6 +32,7 @@ export const MEMBERS = [
     major: "Computer Science and Math",
     internships: "Palantir Technologies; BCG; Start-Up",
     interests: "Tech, quant trading, entrepeneurship, consulting",
+    involvement: "Former board member of Consulting Connect, Data Club, Quant Club. Currently SIBC Palantir Project Leader, Start-up (Piq). Interested in: SWE, Quant, Trading, Consulting",
     slots: [
       { day: 1, start: 10.5, end: 11.5, where: "Hagerty" },
       { day: 3, start: 10.5, end: 11.5, where: "Hagerty" },
@@ -48,6 +49,7 @@ export const MEMBERS = [
     major: "Finance and Economics",
     internships: "Goldman Sachs Investment Banking LatAm",
     interests: "Investment Banking",
+    involvement: "SIBC Project Leader and team member (past), helps Career Center revise resumes, CA Manager at CCD (Duncan 5th floor), GGL Dialogue Leader, shirt committee (one semester)",
     slots: [
       { day: 1, start: 17, end: 19, where: "Duncan 5th Floor / Zoom (email me)" },
       { day: 3, start: 17, end: 19, where: "Duncan 5th Floor / Zoom (email me)" },
@@ -64,6 +66,7 @@ export const MEMBERS = [
     major: "Finance and Economics",
     internships: "JPMorgan Investment Banking LatAm",
     interests: "Investment Banking",
+    involvement: "",
     slots: [
       { day: 1, start: 19, end: 21, where: "" },
     ],
@@ -79,8 +82,9 @@ export const MEMBERS = [
     major: "Honors Finance and ACMS, Minor in Theology",
     internships: "Santander Investment Banking",
     interests: "Investment Banking",
+    involvement: "Business Honors Program, AIM LXIII, Foundations of Finance TA (Ackermann), Study abroad: Rome",
     slots: [
-      { day: 1, start: 16.5, end: 18.5, where: "Mendoza" },
+      { day: 1, start: 16.5, end: 18.5, where: "Mendoza Trading Room (email me)" },
     ],
   },
   {
@@ -92,9 +96,10 @@ export const MEMBERS = [
     linkedin: "https://www.linkedin.com/in/isabella-olarte-ortega-35725b206/",
     zoom: "https://notredame.zoom.us/j/6174169505?pwd=bc3BUc68XSKObf3IMacKTSrWblaNqt.1",
     photo: "isabella-olarte.jpg",
-    major: "Business Analytics and Psychology",
+    major: "Psychology and Business Analytics, Minor in Sociology",
     internships: "BCG",
     interests: "Consulting",
+    involvement: "Consulting Connect board member, Research with Psych department, Writing Center Tutor, Matriculate, Bain BEL Program",
     slots: [
       { day: 2, start: 14, end: 16, where: "Zoom" },
     ],
@@ -107,11 +112,12 @@ export const MEMBERS = [
     email: "fgarret2@nd.edu",
     linkedin: "https://www.linkedin.com/in/felipe-garrett-larrabure/",
     photo: "felipe-garrett.jpg",
-    major: "Honors Applied Math",
+    major: "Honors Applied Math and Hispanic Literature",
     internships: "Morgan Stanley Asset Management; Honors Mathematical Research",
     interests: "Asset Management / STEM",
+    involvement: "Research Honors thesis in Graph Theory (pure math)",
     slots: [
-      { day: 5, start: 14, end: 16, where: "" },
+      { day: 5, start: 14, end: 16, where: "Hesburgh Library First Floor" },
     ],
   },
   {
@@ -125,6 +131,7 @@ export const MEMBERS = [
     major: "Finance and Economics",
     internships: "JPMorgan Investment Banking LatAm",
     interests: "Investment Banking",
+    involvement: "",
     slots: [
       { day: 2, start: 17, end: 19, where: "Mendoza / Zoom (email me)" },
     ],
@@ -140,6 +147,7 @@ export const MEMBERS = [
     major: "Finance",
     internships: "Evercore Investment Banking; Private Equity (Infrastructure); Venture Capital",
     interests: "Investment Banking, Private Equity, Venture Capital, and Entrepreneurship",
+    involvement: "",
     slots: [
       { day: 4, start: 16, end: 18, where: "" },
     ],
@@ -156,6 +164,7 @@ export const MEMBERS = [
     major: "Finance and Economics, Minor in Real Estate",
     internships: "JPMorgan Wealth Management",
     interests: "Wealth Management",
+    involvement: "Summer Abroad (Singapore), Semester Abroad (Australia), LRC Calc A Tutor, Real Estate Student Worker, SIBC (Tech Consulting), SCNO",
     slots: [
       { day: 1, start: 12.5, end: 14.5, where: "Mendoza / Virtual" },
     ],
@@ -171,6 +180,7 @@ export const MEMBERS = [
     major: "Finance and Applied Mathematics",
     internships: "Ospraie Management, Goldman Sachs Sales & Trading",
     interests: "Sales and Trading; PE",
+    involvement: "",
     slots: [
       { day: 2, start: 16, end: 18, where: "Hesburgh / Mendoza" },
     ],
@@ -186,6 +196,7 @@ export const MEMBERS = [
     major: "Mechanical Engineering",
     internships: "EY Consulting; Netflix",
     interests: "Engineering / STEM",
+    involvement: "",
     slots: [
       { day: 3, start: 15, end: 17, where: "Meruelo Career Center (in person)" },
     ],
@@ -201,6 +212,7 @@ export const MEMBERS = [
     major: "Finance and Marketing",
     internships: "Morgan Stanley",
     interests: "Marketing / Wealth Management",
+    involvement: "",
     slots: [
       { day: 1, start: 15, end: 17, where: "Mendoza" },
     ],
@@ -217,6 +229,7 @@ export const MEMBERS = [
     major: "Strategic Management and Finance",
     internships: "",
     interests: "Entrepreneurship & VC",
+    involvement: "",
     slots: [
       { day: 3, start: 18, end: 20, where: "Flexible (email me)" },
       { day: 7, start: 14, end: 16, where: "Flexible (email me)" },
@@ -233,6 +246,7 @@ export const MEMBERS = [
     major: "Mechanical Engineering",
     internships: "London Study Abroad",
     interests: "Consulting",
+    involvement: "",
     slots: [
       { day: 4, start: 18, end: 20, where: "O'Shaughnessy Hall" },
     ],
@@ -245,11 +259,12 @@ export const MEMBERS = [
     email: "arestell@nd.edu",
     linkedin: "https://www.linkedin.com/in/agustina-restelli/",
     photo: "agustina-restelli.jpg",
-    major: "Electrical Engineering, Minor in Finance",
-    internships: "London Study Abroad",
+    major: "Mechanical Engineering",
+    internships: "Investment Banking (Argentina)",
     interests: "Investment Banking",
+    involvement: "SIBC; interested in investment banking",
     slots: [
-      { day: 4, start: 11, end: 13, where: "" },
+      { day: 4, start: 11, end: 13, where: "Mendoza" },
     ],
   },
   {
@@ -263,6 +278,7 @@ export const MEMBERS = [
     major: "Finance & Business Analytics; minor in Computing and Digital Technologies",
     internships: "Glenair Freshman Finance Internship",
     interests: "Investment Banking",
+    involvement: "Girls Who Invest, SIBC, NDIC, NDVC, Business Golf Club; interested in investment banking and alternative investments",
     slots: [
       { day: 3, start: 16, end: 18, where: "Mendoza" },
     ],
@@ -275,9 +291,10 @@ export const MEMBERS = [
     email: "clazarte@nd.edu",
     linkedin: "https://www.linkedin.com/in/carloslazarte/",
     photo: "carlos-lazarte.jpg",
-    major: "Finance and Economics",
+    major: "Finance and ACMS",
     internships: "Goldman Sachs Investment Banking LatAm",
     interests: "Investment Banking",
+    involvement: "SIBC, NDIC; interested in investment banking",
     slots: [
       { day: 4, start: 16, end: 18, where: "Mendoza" },
     ],
